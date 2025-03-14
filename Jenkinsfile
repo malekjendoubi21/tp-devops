@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                    mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.168.33.10:8082/repository/maven-releases/
+                    mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.168.56.10:8082/repository/maven-releases/
                     """
                 }
             }
