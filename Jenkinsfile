@@ -30,7 +30,7 @@ pipeline {
                 }
             }
          
-
+         }
 
       
  stage('docker image Stage') {
