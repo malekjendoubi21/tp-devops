@@ -41,6 +41,11 @@ pipeline {
                 }
 
       
+ stage('docker image Stage') {
+                      steps {
+                          sh 'docker build -t timesheet:1.0.0 https://github.com/malekjendoubi21/tp-devops.git'
+            }
+        }
 
 
 
