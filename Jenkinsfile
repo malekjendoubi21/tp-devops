@@ -41,12 +41,12 @@ pipeline {
                 }
 
       
- stage('docker image Stage') {
-                      steps {
-                          sh 'docker build -t timesheet:1.0.0 https://github.com/malekjendoubi21/tp-devops.git'
-            }
-        }
 
+    stage('docker image Stage') {
+                      steps {
+                     sh """
+docker login -u malekjendoubi -p malek12345
+docker push malekjendoubi/timesheet:1.0.0
 
 
         
