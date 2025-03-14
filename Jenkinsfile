@@ -40,15 +40,7 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh """
-                    docker build -t malekjendoubi/timesheet:1.0.0 .
-                    """
-                }
-            }
-        }
+       
 
         stage('Push Docker Image') {
             steps {
