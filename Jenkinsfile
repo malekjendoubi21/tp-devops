@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -6,15 +7,11 @@ pipeline {
         maven 'M2_HOME' 
     }
 
-    environment {
-        NEXUS_URL = "http://192.168.56.10:8082/repository/maven-releases/"
-        NEXUS_REPO_ID = "nexus"
-    }
-
     stages {
         stage('GIT') {
             steps {
-                git branch: 'main', url: 'https://github.com/malekjendoubi21/tp-devops.git'
+                git branch: 'main',
+                    url: 'https://github.com/malekjendoubi21/tp-devops.git'
             }
         }
 
@@ -23,15 +20,23 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
+      
 
-         stage('Deploy to Nexus') {
+
+        stage('Deploy to Nexus') {
             steps {
                 script {
                     sh """
-                    mvn deploy -DaltDeploymentRepository=nexus::default::http://192.168.56.10:8082/repository/maven-releases/
+                    mvn deploy -DaltDeploymentRepository=deploymentRepo::default::http://192.168.33.10:8082/repository/maven-releases/
                     """
                 }
             }
         }
-    }
+
+
+
+
+        
+
+}
 }
