@@ -20,10 +20,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Nexus') {
+       stage('Deploy to Nexus') {
             steps {
                 script {
-                    sh 'mvn deploy'  // Simplification si settings.xml est correctement configuré
+                    sh """
+                    mvn deploy -DaltDeploymentRepository=nexus::default::http://192.168.56.10:8082/repository/maven-releases/
+                    """
                 }
             }
         }
